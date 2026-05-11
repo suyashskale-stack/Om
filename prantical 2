@@ -1,0 +1,159 @@
+samruddhi@Ubuntu:~$ mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.4.8-0ubuntu1 (Ubuntu)
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| CursorDemo         |
+| PRACTICAL1         |
+| PRACTICAL12        |
+| PRACTICAL3         |
+| PRACTICAL4         |
+| PRACTICAL6         |
+| PRACTICAL7         |
+| PRACTICAL8         |
+| XYZ                |
+| abc                |
+| company_db         |
+| db                 |
+| information_schema |
+| lib                |
+| library            |
+| library_db         |
+| mysql              |
+| performance_schema |
+| practical3         |
+| pratical5          |
+| sys                |
++--------------------+
+21 rows in set (0.01 sec)
+
+mysql> CREATE DATABASE PR2;
+Query OK, 1 row affected (0.06 sec)
+
+mysql> USE PR2;
+Database changed
+mysql> CREATE TABLE DEPARTMENT (DEPT_ID INT PRIMARY KEY,DEPT_NAME VARCHAR(20));
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> CREATE TABLE STUDENT (ROLL_NO INT PRIMARY KEY,NAME VARCHAR(20) UNIQUE,ID INT, MARKS INT NOT NULL, AGE INT CHECK(AGE>=18), FOREIGN KEY (ID) REFERENCES DEPARTMENT(DEPT_ID));
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> INSERT INTO DEPARTMENT VALUES 
+    -> (1,"COMP"),
+    -> (2,"IT"),
+    -> (3,"ENTC");
+Query OK, 3 rows affected (0.06 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO STUDENT VALUES (101,"RAJ",4,90,21);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`PR2`.`STUDENT`, CONSTRAINT `STUDENT_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `DEPARTMENT` (`DEPT_ID`))
+mysql> INSERT INTO STUDENT VALUES (101,"RAJ",1,90,21);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO STUDENT VALUES (101,"RAJ",1,90,15);
+ERROR 3819 (HY000): Check constraint 'STUDENT_chk_1' is violated.
+mysql> INSERT INTO STUDENT VALUES (102,"RAJ",1,90,15);
+ERROR 3819 (HY000): Check constraint 'STUDENT_chk_1' is violated.
+mysql> INSERT INTO STUDENT VALUES (102,"RAM",1,80,22);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO STUDENT VALUES (103,"RAMA",2,75,25);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> INSERT INTO STUDENT VALUES (104,"RAHUL",3,95,18);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO STUDENT VALUES (105,"PRIYA",2,92,20);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO STUDENT VALUES (106,"ADAM",3,92,21);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> SELECT * FROM DEPARTMENT,
+    -> ^C
+mysql> SELECT * FROM DEPARTMENT;
++---------+-----------+
+| DEPT_ID | DEPT_NAME |
++---------+-----------+
+|       1 | COMP      |
+|       2 | IT        |
+|       3 | ENTC      |
++---------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM STUDENT;
++---------+-------+------+-------+------+
+| ROLL_NO | NAME  | ID   | MARKS | AGE  |
++---------+-------+------+-------+------+
+|     101 | RAJ   |    1 |    90 |   21 |
+|     102 | RAM   |    1 |    80 |   22 |
+|     103 | RAMA  |    2 |    75 |   25 |
+|     104 | RAHUL |    3 |    95 |   18 |
+|     105 | PRIYA |    2 |    92 |   20 |
+|     106 | ADAM  |    3 |    92 |   21 |
++---------+-------+------+-------+------+
+6 rows in set (0.00 sec)
+
+mysql> ALTER TABLE STUDENT ADD COLUMN CITY VARCHAR(50);
+Query OK, 0 rows affected (0.12 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM STUDENT;
++---------+-------+------+-------+------+------+
+| ROLL_NO | NAME  | ID   | MARKS | AGE  | CITY |
++---------+-------+------+-------+------+------+
+|     101 | RAJ   |    1 |    90 |   21 | NULL |
+|     102 | RAM   |    1 |    80 |   22 | NULL |
+|     103 | RAMA  |    2 |    75 |   25 | NULL |
+|     104 | RAHUL |    3 |    95 |   18 | NULL |
+|     105 | PRIYA |    2 |    92 |   20 | NULL |
+|     106 | ADAM  |    3 |    92 |   21 | NULL |
++---------+-------+------+-------+------+------+
+6 rows in set (0.00 sec)
+
+mysql> ALTER TABLE STUDENT DROP COLUMN CITY;
+Query OK, 0 rows affected (0.16 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM STUDENT;
++---------+-------+------+-------+------+
+| ROLL_NO | NAME  | ID   | MARKS | AGE  |
++---------+-------+------+-------+------+
+|     101 | RAJ   |    1 |    90 |   21 |
+|     102 | RAM   |    1 |    80 |   22 |
+|     103 | RAMA  |    2 |    75 |   25 |
+|     104 | RAHUL |    3 |    95 |   18 |
+|     105 | PRIYA |    2 |    92 |   20 |
+|     106 | ADAM  |    3 |    92 |   21 |
++---------+-------+------+-------+------+
+6 rows in set (0.00 sec)
+
+mysql> RENAME TABLE STUDENT TO STUDENT_DETAILS;
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> TRUNCATE TABLE STUDENT_DETAILS;
+Query OK, 0 rows affected (0.23 sec)
+
+mysql> SELECT * FROM STUDENT_DETAILS;
+Empty set (0.01 sec)
+
+mysql> DROP TABLE STUDENT_DETAILS;
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> EXIT;
+Bye
+samruddhi@Ubuntu:~$ 
+
