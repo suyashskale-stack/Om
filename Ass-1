@@ -1,0 +1,45 @@
+Create a simple HTML page displaying personal details using text formatting 
+tags. 
+CODE: 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Assignment 1 - Personal Details</title> 
+</head> 
+<body bgcolor="#f0f8ff"> 
+<!-- Header Section --> 
+<center> 
+<h1 style="color: navy;">STUDENT BIO-DATA</h1> 
+<h3>Department of Computer Engineering</h3> 
+</center> 
+<hr size="3" color="black"> 
+<!-- Personal Info Section --> 
+<h2>1. Personal Information</h2> 
+<p> 
+<b>Full Name:</b> virat S. kohli<br> 
+<b>Date of Birth:</b> 15<sup>th</sup> August 2004<br> 
+<b>Email ID:</b> <u>virat.kohli@example.com</u><br> 
+<b>Address:</b> <i>Flat No. 101, Sunshine Society, Pune - 411041.</i> 
+</p> 
+<!-- Education Section --> 
+<h2>2. Educational Qualification</h2> 
+<p> 
+<strong>Degree:</strong> Bachelor of Engineering (Computer)<br> 
+<strong>College:</strong> Savitribai Phule Pune University<br> 
+<strong>Current Year:</strong> Second Year (SE)<br> 
+<strong>Percentage:</strong> <mark>85.50%</mark> 
+</p> 
+<!-- Hobbies Section --> 
+<h2>3. Hobbies & Interests</h2> 
+<p> 
+I enjoy: 
+<br> &bull; Reading <small>(Science Fiction)</small> 
+<br> &bull; Coding in <b>Java</b> and <b>Python</b> 
+<br> &bull; Traveling 
+</p> 
+<hr> 
+<center><b>*** End of Profile ***</b></center> 
+</body> 
+</html>
