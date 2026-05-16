@@ -1,0 +1,80 @@
+Design a web page that includes an image, hyperlink, and a nested table. 
+ 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Profile & Timetable</title> 
+</head> 
+<body> 
+ 
+    <!-- Main Layout Table --> 
+    <table border="1" width="100%" cellpadding="10" cellspacing="0"> 
+        <!-- Header --> 
+        <tr bgcolor="#2c3e50"> 
+            <th colspan="2" style="color: white; padding: 15px;"> 
+                <h1>STUDENT DASHBOARD</h1> 
+            </th> 
+        </tr> 
+ 
+        <tr> 
+            <!-- Left Column: Profile --> 
+            <td width="30%" align="center" valign="top" bgcolor="#ecf0f1"> 
+                <h3>Student Profile</h3> 
+                <!-- Ensure 'student.png' exists in the folder --> 
+                <img src="student.png" alt="Student Photo" width="150" height="150" 
+border="2"> 
+                <br><br> 
+                <p><b>Name:</b> Suyash Patil</p> 
+                <p><b>Roll No:</b> 24055</p> 
+                <br> 
+                <!-- Hyperlink --> 
+                <a href="http://www.unipune.ac.in/" target="_blank"> 
+                    <button style="cursor: pointer; padding: 10px;">Visit SPPU Website</button> 
+                </a> 
+            </td> 
+ 
+            <!-- Right Column: Nested Table --> 
+            <td valign="top"> 
+                <h3 align="center">Weekly Academic Schedule</h3> 
+                 
+                <!-- START NESTED TABLE --> 
+                <table border="1" width="90%" align="center" cellspacing="0" cellpadding="8"> 
+                    <tr bgcolor="#3498db" style="color: white;"> 
+                        <th>Time</th> 
+                        <th>Monday</th> 
+                        <th>Tuesday</th> 
+                        <th>Wednesday</th> 
+                    </tr> 
+                    <tr> 
+                        <td align="center">10:00 - 11:00</td> 
+                        <td>Web Development</td> 
+                        <td>Data Structures</td> 
+                        <td>Logic Design</td> 
+                    </tr> 
+                    <tr> 
+                        <td align="center">11:00 - 12:00</td> 
+                        <td>Database Mgmt</td> 
+                        <td>Web Development</td> 
+                        <td>Mathematics</td> 
+                    </tr> 
+                    <tr bgcolor="#bdc3c7"> 
+                        <td align="center">12:00 - 01:00</td> 
+                        <td colspan="3" align="center"><b>LUNCH BREAK</b></td> 
+                    </tr> 
+                    <tr> 
+                        <td align="center">01:00 - 03:00</td> 
+                        <td><b>Web Dev Lab</b></td> 
+                        <td>DS Lab</td> 
+                        <td>DBMS Lab</td> 
+                    </tr> 
+                </table> 
+                <!-- END NESTED TABLE --> 
+                 
+            </td> 
+        </tr> 
+    </table> 
+</body> 
+</html>  
+ 
+ 
+ 
