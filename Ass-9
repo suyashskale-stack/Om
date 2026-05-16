@@ -1,0 +1,69 @@
+Design a PHP script to display "Welcome" message and current date & time. 
+ 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>PHP Introduction</title> 
+    <style> 
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #f0f2f5; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+        } 
+        .server-card { 
+            background-color: white; 
+            padding: 40px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            text-align: center; 
+            border-top: 5px solid #7b1fa2; /* Purple Accent */ 
+        } 
+        .time-box { 
+            background-color: #f3e5f5; 
+            padding: 15px; 
+            margin-top: 20px; 
+            border-radius: 5px; 
+            font-weight: bold; 
+            color: #4a148c; 
+            border: 1px dashed #7b1fa2; 
+        } 
+    </style> 
+</head> 
+<body> 
+ 
+    <div class="server-card"> 
+        <h1 style="color: #4a148c;">Server-Side Scripting</h1> 
+        <hr> 
+         
+        <?php 
+            // --- PHP SCRIPT STARTS HERE --- 
+ 
+            // 1. Configuration: Set Timezone to India 
+date_default_timezone_set('Asia/Kolkata'); 
+// 2. Variable Declaration 
+$greeting = "Welcome to Web Development Lab"; 
+$student_role = "Second Year Engineering Student"; 
+// 3. String Output using Echo 
+// Note: We can embed HTML tags inside the PHP string 
+echo "<h2>$greeting</h2>"; 
+echo "<p>You are logged in as: <b>$student_role</b></p>"; 
+// 4. Date Logic 
+$current_date = date("l, d F Y"); // e.g., Monday, 02 December 2024 
+$current_time = date("h:i:s A");  // e.g., 03:30:45 PM 
+echo "<div class='time-box'>"; 
+echo "Server Date: " . $current_date . "<br>"; 
+echo "Server Time: " . $current_time; 
+echo "</div>"; 
+// --- PHP SCRIPT ENDS HERE --- 
+?> 
+<p><small><i>This page was generated dynamically by 
+Apache/PHP.</i></small></p> 
+</div> 
+</body> 
+</html>
