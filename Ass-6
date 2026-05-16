@@ -1,0 +1,65 @@
+ 
+Write a JavaScript program to validate form inputs (e.g., email, empty fields). 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>JS Form Validation</title> 
+    <style> 
+        body { font-family: Arial, sans-serif; background: #eee; } 
+        .login-box { width: 300px; margin: 50px auto; padding: 20px; background: white; 
+border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1); } 
+        input { width: 100%; padding: 8px; margin: 10px 0; box-sizing: border-box; } 
+        button { width: 100%; padding: 10px; background: #4CAF50; color: white; border: 
+none; cursor: pointer; font-size: 16px; } 
+        button:hover { background: #45a049; } 
+    </style> 
+     
+    <script> 
+        function validateForm() { 
+            // 1. Retrieve Values 
+            var email = document.getElementById("u_email").value; 
+            var pass = document.getElementById("u_pass").value; 
+ 
+            // 2. Check Empty Fields 
+            if (email == "" || pass == "") { 
+                alert("Error: Fields cannot be empty!"); 
+                return false; // Stop form submission 
+            } 
+ 
+            // 3. Check Email Format (Basic Logic) 
+            // Rule: Must contain '@', must contain '.', and '@' cannot be at the start 
+            var atPos = email.indexOf("@"); 
+            var dotPos = email.lastIndexOf("."); 
+             
+            if (atPos < 1 || dotPos < atPos + 2 || dotPos + 2 >= email.length) { 
+                alert("Error: Please enter a valid email address!"); 
+                return false; 
+            } 
+ 
+            // 4. Check Password Length 
+            if (pass.length < 6) { 
+                alert("Error: Password must be at least 6 characters long."); 
+                return false; 
+            } 
+ 
+            // 5. If all checks pass 
+            alert("Validation Successful! Submitting form..."); 
+            return true; // Allow form submission 
+} 
+</script> 
+</head> 
+<body> 
+<div class="login-box"> 
+<h2 style="text-align:center">Login</h2> 
+<!-- Form --> 
+<form name="myForm" action="dashboard.html" onsubmit="return validateForm()" 
+method="post"> 
+<label>Email ID:</label> 
+<input type="text" id="u_email" name="email" placeholder="user@example.com"> 
+<label>Password:</label> 
+<input type="password" id="u_pass" name="password" placeholder="******"> 
+<button type="submit">Login</button> 
+</form> 
+</div> 
+</body> 
+</html>
