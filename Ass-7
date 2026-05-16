@@ -1,0 +1,75 @@
+Create a web page that uses JavaScript to display dynamic content using DOM. 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>DOM Manipulation</title> 
+    <style> 
+        body { text-align: center; font-family: sans-serif; margin-top: 50px; } 
+         
+        #targetBox { 
+            width: 300px; 
+            height: 150px; 
+            background-color: #e0e0e0; 
+            border: 2px solid #333; 
+            padding: 40px 20px; 
+            box-sizing: border-box; /* Includes padding in width */ 
+            font-size: 20px; 
+            margin: 20px auto; 
+            transition: all 0.5s ease; /* Smooth transition */ 
+        } 
+         
+        .btn { 
+            padding: 10px 20px; 
+            margin: 5px; 
+            cursor: pointer; 
+            background-color: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            font-size: 16px; 
+        } 
+        .btn:hover { background-color: #0056b3; } 
+    </style> 
+</head> 
+<body> 
+ 
+    <h2>JavaScript DOM Demo</h2> 
+ 
+    <!-- Target Element --> 
+    <div id="targetBox">Original Text Content</div> 
+ 
+    <br> 
+ 
+    <!-- Interactive Controls --> 
+    <button class="btn" onclick="changeText()">Change Text</button> 
+    <button class="btn" onclick="changeStyle()">Change Style</button> 
+    <button class="btn" onclick="toggleBox()">Show / Hide</button> 
+ 
+<script> 
+// Function 1: Change Content 
+function changeText() { 
+var box = document.getElementById("targetBox"); 
+box.innerHTML = "<b>Hello World!</b><br>DOM Manipulation is cool."; 
+} 
+// Function 2: Change CSS Styles 
+function changeStyle() { 
+var box = document.getElementById("targetBox"); 
+box.style.backgroundColor = "#ffeb3b"; // Yellow 
+box.style.color = "#d32f2f"; // Red Text 
+box.style.border = "5px dashed #d32f2f"; 
+box.style.borderRadius = "25px"; 
+box.style.boxShadow = "0px 10px 20px rgba(0,0,0,0.3)"; 
+} 
+// Function 3: Toggle Visibility logic 
+function toggleBox() { 
+var box = document.getElementById("targetBox"); 
+// Check computed style or check if inline style is set 
+if (box.style.display === "none") { 
+box.style.display = "block"; 
+} else { 
+box.style.display = "none"; 
+} 
+} 
+</script> 
+</body> 
+</html>
