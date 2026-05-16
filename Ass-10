@@ -1,0 +1,90 @@
+Write a PHP program to accept form input and display it using the POST method. 
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>PHP POST Form Handling</title> 
+<style> 
+body { font-family: Arial, sans-serif; background-color: #e9ecef; padding: 20px; } 
+.container { 
+max-width: 400px; 
+margin: 0 auto; 
+background: white; 
+padding: 20px; 
+border-radius: 8px; 
+box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+} 
+input[type="text"], input[type="number"] { 
+width: 100%; 
+padding: 10px; 
+margin: 10px 0; 
+border: 1px solid #ccc; 
+border-radius: 4px; 
+box-sizing: border-box; /* Fix padding issue */ 
+} 
+input[type="submit"] { 
+width: 100%; 
+background-color: #28a745; 
+color: white; 
+padding: 10px; 
+border: none; 
+border-radius: 4px; 
+cursor: pointer; 
+font-size: 16px; 
+} 
+input[type="submit"]:hover { background-color: #218838; } 
+.result-box { 
+margin-top: 20px; 
+padding: 15px; 
+border-radius: 4px; 
+background-color: #d1e7dd; 
+border: 1px solid #badbcc; 
+color: #0f5132; 
+} 
+.error { color: red; font-size: 12px; } 
+</style> 
+</head> 
+<body> 
+    <div class="container"> 
+        <h2 style="text-align: center; color: #333;">Voting Eligibility Check</h2> 
+        <!--  
+            action: PHP_SELF means submit to this same file. 
+            method: POST ensures data is secure. 
+        --> 
+        <form method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>"> 
+            <label>Full Name:</label> 
+            <input type="text" name="fname" placeholder="Enter your name" required> 
+            <label>Age:</label> 
+            <input type="number" name="age" placeholder="Enter your age" required> 
+            <input type="submit" value="Check Eligibility"> 
+        </form> 
+        <!-- PHP Processing Logic --> 
+        <?php 
+        if ($_SERVER["REQUEST_METHOD"] == "POST") { 
+            // 1. Retrieve and Sanitize Data 
+            // htmlspecialchars prevents Cross-Site Scripting (XSS) 
+            $name = htmlspecialchars($_POST['fname']); 
+            $age = $_POST['age']; 
+            // 2. Validation 
+            if (empty($name) || empty($age)) { 
+                echo "<p class='error'>Fields cannot be empty!</p>"; 
+            } else { 
+                // 3. Business Logic 
+                $status = ""; 
+                if ($age >= 18) { 
+                    $status = "You are <b>Eligible</b> to vote."; 
+                } else { 
+                    $years_left = 18 - $age; 
+                    $status = "You are <b>Not Eligible</b>. Wait for $years_left more years."; 
+                } 
+                // 4. Display Output 
+                echo "<div class='result-box'>"; 
+                echo "<h4>Result for $name:</h4>"; 
+                echo "Your Age: $age <br>"; 
+                echo "$status"; 
+                echo "</div>"; 
+            } 
+        } 
+        ?> 
+    </div> 
+</body> 
+</html>
