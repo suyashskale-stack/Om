@@ -1,0 +1,83 @@
+Create a PHP script to store and display values in an array. 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>PHP Arrays</title> 
+    <style> 
+        body { font-family: Arial, sans-serif; background-color: #f8f9fa; padding: 40px; } 
+        .card { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; 
+box-shadow: 0 2px 5px rgba(0,0,0,0.1); } 
+        h3 { color: #007bff; border-bottom: 2px solid #007bff; display: inline-block; 
+padding-bottom: 5px; } 
+         
+        /* List Styling */ 
+        ul { list-style-type: square; color: #555; } 
+        li { margin: 5px 0; font-size: 18px; } 
+ 
+        /* Table Styling */ 
+        table { border-collapse: collapse; width: 60%; margin-top: 10px; } 
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; } 
+        th { background-color: #343a40; color: white; } 
+        tr:nth-child(even) { background-color: #f2f2f2; } 
+        tr:hover { background-color: #ddd; } 
+    </style> 
+</head> 
+<body> 
+ 
+    <h1 style="text-align:center">PHP Arrays Demonstration</h1> 
+ 
+    <!-- 1. INDEXED ARRAY DEMO --> 
+    <div class="card"> 
+        <h3>1. Indexed Array (List of Technologies)</h3> 
+        <p><i>Scenario: Storing a list of skills for a resume.</i></p> 
+         
+        <?php 
+            // Declaration 
+            $tech_stack = array("HTML5", "CSS3", "JavaScript", "PHP 8", "MySQL"); 
+             
+            // Adding a new item dynamically 
+            $tech_stack[] = "Bootstrap 5"; 
+ 
+            echo "<ul>"; 
+            // Loop through indexed array 
+            foreach ($tech_stack as $tech) { 
+                echo "<li>$tech</li>"; 
+            } 
+            echo "</ul>"; 
+             
+echo "<b>Total Technologies: " . count($tech_stack) . "</b>"; 
+?> 
+</div> 
+<!-- 2. ASSOCIATIVE ARRAY DEMO --> 
+<div class="card"> 
+<h3>2. Associative Array (Student Marks)</h3> 
+<p><i>Scenario: Storing Key-Value pairs where Key=Subject and 
+Value=Marks.</i></p> 
+<?php 
+// Declaration Key => Value 
+$marks = array( 
+"Web Development" => 90, 
+"Database Mgmt"   => 85, 
+"Data Structures" => 78, 
+"Microprocessors" => 82 
+); 
+?> 
+<table> 
+<tr> 
+<th>Subject Name</th> 
+<th>Marks Obtained</th> 
+</tr> 
+<?php 
+// Loop through associative array 
+// $subject becomes the Key, $score becomes the Value 
+foreach($marks as $subject => $score) { 
+echo "<tr>"; 
+echo "<td>" . $subject . "</td>"; 
+echo "<td>" . $score . "</td>"; 
+echo "</tr>"; 
+} 
+?> 
+</table> 
+</div> 
+</body> 
+</html>
