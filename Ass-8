@@ -1,0 +1,85 @@
+Write a JavaScript program for a simple calculator using functions and switch-case. 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>JS Calculator</title> 
+    <style> 
+        .calculator { 
+            width: 320px; 
+            margin: 50px auto; 
+            padding: 20px; 
+            border: 1px solid #ccc; 
+            background-color: #f8f9fa; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+            text-align: center; 
+        } 
+        input { width: 90%; padding: 10px; margin: 10px 0; font-size: 16px; } 
+        .btn-group button { width: 22%; padding: 15px; font-size: 18px; cursor: pointer; 
+margin: 2px; } 
+        #result { font-size: 24px; color: navy; font-weight: bold; } 
+    </style> 
+</head> 
+<body> 
+ 
+    <div class="calculator"> 
+        <h2>JS Calculator</h2> 
+         
+        <input type="number" id="num1" placeholder="Enter Number 1"> 
+        <input type="number" id="num2" placeholder="Enter Number 2"> 
+         
+        <div class="btn-group"> 
+            <button onclick="calculate('+')">+</button> 
+            <button onclick="calculate('-')">-</button> 
+            <button onclick="calculate('*')">&times;</button> 
+            <button onclick="calculate('/')">&divide;</button> 
+        </div> 
+         
+        <hr> 
+        <p>Result: <span id="result">0</span></p> 
+    </div> 
+ 
+    <script> 
+        function calculate(operator) { 
+            // 1. Get Values and Convert to Float 
+            var n1 = parseFloat(document.getElementById("num1").value); 
+            var n2 = parseFloat(document.getElementById("num2").value); 
+            var output = 0; 
+ 
+            // 2. Validation 
+            if (isNaN(n1) || isNaN(n2)) { 
+                alert("Please enter valid numbers!"); 
+                return; 
+            } 
+ 
+            // 3. Logic 
+            switch(operator) { 
+                case '+': 
+                    output = n1 + n2; 
+                    break; 
+                case '-': 
+                    output = n1 - n2; 
+                    break; 
+                case '*': 
+                    output = n1 * n2; 
+                    break; 
+                case '/': 
+                    if (n2 === 0) { 
+                        alert("Cannot Divide by Zero"); 
+                        return; 
+                    } 
+                    output = n1 / n2; 
+                    break; 
+                default: 
+                    output = "Invalid"; 
+            } 
+ 
+            // 4. Display 
+            document.getElementById("result").innerHTML = output; 
+        } 
+    </script> 
+ 
+</body> 
+</html> 
+ 
+ 
