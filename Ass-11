@@ -1,0 +1,65 @@
+Implement a PHP program for string manipulation (e.g., reverse, length, substring). 
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>PHP String Operations</title> 
+<style> 
+body { font-family: 'Verdana', sans-serif; background-color: #222; color: #fff; padding: 
+30px; } 
+.container { max-width: 600px; margin: 0 auto; background-color: #333; padding: 
+20px; border-radius: 10px; border-left: 5px solid #ff9800; } 
+h2 { color: #ff9800; border-bottom: 1px solid #555; padding-bottom: 10px; } 
+.original { background-color: #444; padding: 10px; font-size: 1.2em; border-radius: 
+5px; margin-bottom: 20px; } 
+ul { list-style-type: none; padding: 0; } 
+li { background-color: #444; margin: 5px 0; padding: 10px; border-radius: 5px; display: 
+flex; justify-content: space-between; } 
+.label { color: #aaa; font-weight: bold; } 
+.value { color: #81c784; font-family: 'Courier New', monospace; font-weight: bold; } 
+</style> 
+</head> 
+<body> 
+<div class="container"> 
+<h2>PHP String Manipulation</h2> 
+<?php 
+// 1. Input String 
+$str = "Web Development Lab"; 
+echo "<div class='original'>Original String: <span 
+style='color:#fff'>\"$str\"</span></div>"; 
+echo "<ul>"; 
+// 2. Length Calculation 
+$len = strlen($str); 
+echo "<li><span class='label'>Length (strlen):</span> <span class='value'>$len 
+characters</span></li>"; 
+// 3. Word Count 
+$words = str_word_count($str); 
+echo "<li><span class='label'>Word Count:</span> <span class='value'>$words 
+words</span></li>"; 
+// 4. Reverse 
+$rev = strrev($str); 
+echo "<li><span class='label'>Reverse (strrev):</span> <span 
+class='value'>$rev</span></li>"; 
+// 5. Uppercase 
+$upper = strtoupper($str); 
+echo "<li><span class='label'>Uppercase:</span> <span 
+class='value'>$upper</span></li>"; 
+// 6. Search Position (Zero-indexed) 
+// Searching for 'Dev' 
+$search_term = "Dev"; 
+$pos = strpos($str, $search_term); 
+echo "<li><span class='label'>Position of '$search_term':</span> <span 
+class='value'>Index $pos</span></li>"; 
+// 7. Replace 
+$replaced = str_replace("Lab", "Course", $str); 
+echo "<li><span class='label'>Replace 'Lab':</span> <span 
+class='value'>$replaced</span></li>"; 
+// 8. Substring 
+// Extract 'Web' (Start at 0, length 3) 
+$sub = substr($str, 0, 3); 
+echo "<li><span class='label'>Substring (0, 3):</span> <span 
+class='value'>$sub</span></li>"; 
+echo "</ul>"; 
+?> 
+</div> 
+</body> 
+</html>
